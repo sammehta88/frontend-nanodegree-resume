@@ -12,7 +12,20 @@ var work = {
 		"dates": "2012",
 		"description": "Created models for prototyping and assemblies using SolidWorks"
 	}],
-	"display": "function"
+	"display": function displayWork() {
+	for (job in work.jobs) {
+		$("#workExperience").append(HTMLworkStart);
+		var formattedEmployer = HTMLworkEmployer.replace("%data%",work.jobs[job].employer);
+		var formattedTitle = HTMLworkTitle.replace("%data%",work.jobs[job].title);
+		var formattedDates = HTMLworkDates.replace("%data%",work.jobs[job].dates);
+		var formattedLocation = HTMLworkLocation.replace("%data%",work.jobs[job].location);
+		var formattedDescription = HTMLworkDescription.replace("%data%",work.jobs[job].description);
+		$(".work-entry:last").append(formattedEmployer + formattedTitle);
+		$(".work-entry:last").append(formattedDates);
+		$(".work-entry:last").append(formattedLocation);
+		$(".work-entry:last").append(formattedDescription);
+	};
+}
 };
 
 var projects = {
@@ -27,7 +40,19 @@ var projects = {
 		"description": "f",
 		"images": "f"
 	}],
-	"display": "function"
+	"display": function displayProjects() {
+	for (var project in projects.projects) {
+		$("#projects").append(HTMLprojectStart);
+		var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
+		var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
+		var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
+		var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images);
+		$(".project-entry:last").append(formattedTitle);
+		$(".project-entry:last").append(formattedDates);
+		$(".project-entry:last").append(formattedDescription);
+		$(".project-entry:last").append(formattedImage);
+	};
+}
 };
 
 var bio = {
@@ -45,26 +70,19 @@ var bio = {
 		"SolidWorks","Matlab", "HTML", "CSS", "JavaScript"],
 	"biopic": "url",
 	"display": function displayBio() {
-
 	var formattedName = HTMLheaderName.replace("%data%",bio.name);
 	var formattedRole = HTMLheaderRole.replace("%data%",bio.role);
-
 	$("#header").prepend(formattedRole);
 	$("#header").prepend(formattedName);
-
 	var formattedPic = HTMLbioPic.replace("%data%",bio.biopic);
-
 	$("#header").prepend(formattedPic);
-
 	if (bio.skills != 0) {
 		$("#header").append(HTMLskillsStart);
-
 		for (skill in bio.skills) {
 			var formattedSkill = HTMLskills.replace("%data%",bio.skills[skill]);
 			$("#skills").append(formattedSkill);
 		};
 	};
-
 	for (var key in bio.contacts) {
 		if (bio.contacts.hasOwnProperty(key)) {
 			var formattedContact = HTMLcontactGeneric.replace("%contact%", key);
@@ -107,27 +125,27 @@ var education = {
 		"dates":  2015,
 		"url": "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"
 	}],
-	"display": "function"
+	"display": function displayEducation() {
+		for (var school in education.schools) {
+			$("#education").append(HTMLschoolStart);
+			var formattedName = HTMLschoolName.replace("%data%",education.schools[school].name);
+			var formattedDegree = HTMLschoolDegree.replace("%data%",education.schools[school].degree);
+			var formattedMajors = HTMLschoolMajor.replace("%data%",education.schools[school].majors);
+			var formattedDates = HTMLschoolDates.replace("%data%",education.schools[school].dates);
+			var formattedLocation = HTMLschoolLocation.replace("%data%",education.schools[school].locations);
+			$(".education-entry:last").append(formattedName);
+			$(".education-entry:last").append(formattedDegree);
+			$(".education-entry:last").append(formattedMajors);
+			$(".education-entry:last").append(formattedDates);
+			$(".education-entry:last").append(formattedLocation);
+		}
+	}
 };
 
 bio.display();
-
-function displayWork() {
-	for (job in work.jobs) {
-		$("#workExperience").append(HTMLworkStart);
-		var formattedEmployer = HTMLworkEmployer.replace("%data%",work.jobs[job].employer);
-		var formattedTitle = HTMLworkTitle.replace("%data%",work.jobs[job].title);
-		var formattedDates = HTMLworkDates.replace("%data%",work.jobs[job].dates);
-		var formattedLocation = HTMLworkLocation.replace("%data%",work.jobs[job].location);
-		var formattedDescription = HTMLworkDescription.replace("%data%",work.jobs[job].description);
-		$(".work-entry:last").append(formattedEmployer + formattedTitle);
-		$(".work-entry:last").append(formattedDates);
-		$(".work-entry:last").append(formattedLocation);
-		$(".work-entry:last").append(formattedDescription);
-	};
-};
-
-displayWork();
+work.display();
+projects.display();
+education.display();
 
 $(document).click(function(loc) {
 	var x = event.pageX;
@@ -156,7 +174,7 @@ function inName(name) {
 	return intName;
 };
 
-projects.display = function () {
+/*projects.display = function () {
 	for (var project in projects.projects) {
 		$("#projects").append(HTMLprojectStart);
 		var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
@@ -168,8 +186,7 @@ projects.display = function () {
 		$(".project-entry:last").append(formattedDescription);
 		$(".project-entry:last").append(formattedImage);
 	};
-};
+};*/
 
-projects.display();
 
 $("#map-div").append(googleMap);
