@@ -81,7 +81,7 @@ var bio = {
 		'location': 'Washington, D.C.'
 	},
 	'skills': [
-		'SolidWorks','Matlab', 'HTML', 'CSS', 'JavaScript', 'Excel', 'Chinese'],
+		'solidworks','matlab', 'html', 'css', 'javascript', 'excel', 'chinese'],
 	'biopic': 'url',
 	'display': function displayBio() {
 	var formattedName = HTMLheaderName.replace('%data%',bio.name);
@@ -94,8 +94,7 @@ var bio = {
 		$('#header').append(HTMLskillsStart);
 		var skillsLength = bio.skills.length;
 		for (var i = 0; i < skillsLength; i++) {
-			var formattedSkill = HTMLskills.replace('%data%',bio.skills[i]);
-			formattedSkill = formattedSkill.replace('%skill%',bio.skills[i].toLowerCase());
+			var formattedSkill = HTMLskills.replace(/%data%/gi,bio.skills[i]);
 			$('#skills').append(formattedSkill);
 		};
 	};
@@ -235,6 +234,7 @@ $(".skills-li").on("click", function() {
 	$("#projects").toggleClass("skill-exp");
 	$(".skills-li").toggleClass("skill-clicked", false);
 	$(this).toggleClass("skill-clicked");
+	console.log($(this).attr('class'));
 })
 
 //similar to above but event is hover
@@ -242,3 +242,25 @@ $(".skills-li").hover( function() {
 	$("#projects").toggleClass("skill-hover");
 	$(this).toggleClass("skill-hover");
 })*/
+
+//TODO: add feature so can click on multiple skills with different
+//colors hightlighted
+
+var lastClickedSkill = 'none';
+$('.skills-li').on('click', function() {
+	var skill = $(this).attr('id');
+	var skillClass = "." + skill;
+
+	if (lastClickedSkill === skill) {
+		$(skillClass).toggleClass("skill-clicked");
+		lastClickedSkill = skill;
+	}
+
+	else {
+		var oldSkill = "." + lastClickedSkill;
+		$(oldSkill).toggleClass("skill-clicked", false);
+		$(skillClass).toggleClass("skill-clicked");
+	}
+
+	lastClickedSkill = skill;
+})
