@@ -20,7 +20,8 @@ h6 {
 
 .education-entry,
 .work-entry,
-.project-entry {
+.project-entry,
+.online-entry {
   padding: 0 5%;
 }
 
@@ -167,6 +168,10 @@ span {
   text-align: center;
 }
 
+.online-classes {
+  padding-top: 25px;
+}
+
 /* Media queries to handle various device widths */
 
 @media only screen and (max-width: 1024px) {
@@ -210,4 +215,17 @@ span {
   .biopic {
     display: block;
   }
+}
+
+/*below stlye triggers when certain skills are clicked*/
+.skill-exp {
+  background-color: rgba(222,100,34,1.0);
+}
+
+.skill-clicked {
+  background-color: rgba(222,100,34,1.0);
+}
+
+.skill-hover {
+  background-color: rgba(222,100,34,0.25);
 }
