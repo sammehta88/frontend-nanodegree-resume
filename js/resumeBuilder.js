@@ -170,7 +170,8 @@ var education = {
 
 			for (var key in education.schools[school].majors) {
 				if (education.schools[school].majors.hasOwnProperty(key)) {
-					var formattedMajor = HTMLschoolMajor.replace('%major%', key);
+					var formattedKey = key.charAt(0).toUpperCase() + key.slice(1);
+					var formattedMajor = HTMLschoolMajor.replace('%major%', formattedKey);
 					formattedMajor = formattedMajor.replace('%data%', education.schools[school].majors[key]);
 				};
 				$('.education-entry:last').append(formattedMajor);
