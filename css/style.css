@@ -36,7 +36,7 @@ h1 {
 h2 {
   font-weight: bold;
   font-size: 24px;
-  color: #999;
+  color: rgba(40, 40, 79, 0.6);
   line-height: 29px;
   padding: 10px;
 }
@@ -44,7 +44,7 @@ h2 {
 h3 {
   font-style: italic;
   font-size: 20px;
-  color: #000;
+  color: rgba(40, 40, 79, 0.4);
   line-height: 22px;
 }
 
@@ -120,19 +120,19 @@ a {
   color: #fff;
 }
 
-.gray {
-  background-color: #f3f3f3;
+.blue {
+  background-color: rgba(40, 40, 79, 0.25);
   padding-bottom: 10px;
   clear:both;
 }
 
-.dark-gray {
-  background-color: #4a4a4a;
+.dark-blue {
+  background-color: rgba(40, 40, 79, 1);
 }
 
 /* TODO: Replace with image later */
 #header {
-  background-color: #484848;
+  background-color: rgba(40, 40, 79, 1);
 }
 
 .flex-box {
@@ -300,5 +300,11 @@ span {
   }
   #name {
     display: block;
+  }
+  #role {
+    padding-left: 5px;
+  }
+  #int-button {
+    display: none;
   }
 }
