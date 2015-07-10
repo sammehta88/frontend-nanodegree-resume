@@ -12,6 +12,7 @@ h6 {
   padding:0;
   margin:0;
   font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
 }
 
 .clear-fix {
@@ -22,7 +23,7 @@ h6 {
 .work-entry,
 .project-entry,
 .online-entry {
-  padding: 0 5%;
+  padding: 5px 5%;
 }
 
 h1 {
@@ -84,6 +85,7 @@ p {
   font-size: 14px;
   color: #333;
   line-height: 21px;
+  width: 100%;
 }
 
 a {
@@ -102,6 +104,7 @@ a {
 
 #skills-h3 {
   color: #f5ae23;
+  display: none;
 }
 
 .orange {
@@ -172,32 +175,6 @@ span {
   padding-top: 25px;
 }
 
-/* Media queries to handle various device widths */
-
-@media only screen and (max-width: 1024px) {
-  #lets-connect {
-    margin-top: 5%;
-  }
-}
-
-@media only screen and (max-width:900px) {
-  .biopic {
-    width: 175px;
-  }
-}
-
-@media only screen and (max-width: 750px) {
-  #lets-connect {
-    margin-top: 10%;
-  }
-  .biopic {
-    width: 150px;
-  }
-  .welcome-message {
-    display: none;
-  }
-}
-
 #map {
   display: block;
   height: 100%;
@@ -208,13 +185,6 @@ span {
   height: 400px;
   width: 100%;
   padding-bottom: 5%;
-}
-
-@media only screen and (min-width: 750px) {
-  #skills-h3,
-  .biopic {
-    display: block;
-  }
 }
 
 /*below stlye triggers when certain skills are clicked*/
@@ -228,4 +198,107 @@ span {
 
 .skill-hover {
   background-color: rgba(222,100,34,0.25);
+}
+
+/*changes layout of projects section*/
+
+#projects {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.projects-header {
+  width: 100%;
+}
+
+.project-entry {
+  width: calc(100%/3);
+  flex-shrink: 0;
+  flex-grow: 1;
+}
+
+/*moves internationalize button and welcome msg to middle of screen*/
+
+#int-button,
+.welcome-message {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+}
+
+.clear-both {
+  clear: both;
+}
+
+.biopic {
+  float: left;
+}
+
+.skills-li {
+  flex-shrink: 0;
+  flex-grow: 1;
+  text-align: center;
+  padding-top: 10px;
+}
+
+#role {
+  padding-left: 10px;
+  color: white;
+}
+/* Media queries to handle various device widths */
+
+@media only screen and (max-width: 1024px) {
+  #lets-connect {
+    margin-top: 5%;
+  }
+}
+
+@media only screen and (max-width:900px) {
+  .biopic {
+    width: 175px;
+  }
+
+  .project-entry {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  #lets-connect {
+    margin-top: 10%;
+  }
+  .biopic {
+    width: 150px;
+  }
+  .welcome-message {
+    display: none;
+  }
+  #int-button {
+    margin: 20px auto;
+  }
+}
+
+@media only screen and (min-width: 750px) {
+  #skills-h3,
+  .biopic {
+    display: block;
+  }
+
+  .skills-container {
+    width: 50vw;
+    margin: 0 auto;
+  }
+  .skills-li {
+    width: 25%;
+    padding-bottom: 20px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .project-entry {
+    width: 100%;
+  }
+  #name {
+    display: block;
+  }
 }

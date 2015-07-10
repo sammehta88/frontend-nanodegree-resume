@@ -40,13 +40,13 @@ var projects = {
 		'title': 'Portfolio',
 		'dates': '2015',
 		'description': 'Online porfolio using HTML and CSS',
-		'images': 'f',
+		'images': 'http://placehold.it/125/125',
 		'skills': ['html','css']
 	},{
-		'title': 's',
-		'dates': 'd',
-		'description': 'f',
-		'images': 'f',
+		'title': 'Online Resume',
+		'dates': '2015',
+		'description': 'Online resume using JavaScript',
+		'images': 'http://placehold.it/125/125',
 		'skills': ['javascript']
 	}],
 	'display': function displayProjects() {
@@ -76,20 +76,23 @@ var bio = {
 	'contacts': {
 		'email': 'sammehta88@gmail.com',
 		'mobile': '(248) 739-9185',
-		'github': 'd',
-		'twitter': 'd',
+		'github': 'www.github.com',
+		'twitter': '@faketwitter',
 		'location': 'Washington, D.C.'
 	},
 	'skills': [
 		'solidworks','matlab', 'html', 'css', 'javascript', 'excel', 'chinese'],
-	'biopic': 'url',
+	'biopic': 'http://placehold.it/175/175',
 	'display': function displayBio() {
 	var formattedName = HTMLheaderName.replace('%data%',bio.name);
 	var formattedRole = HTMLheaderRole.replace('%data%',bio.role);
+	var formattedMessage = HTMLwelcomeMsg.replace('%data%', bio.welcomeMessage);
 	$('#header').prepend(formattedRole);
 	$('#header').prepend(formattedName);
 	var formattedPic = HTMLbioPic.replace('%data%',bio.biopic);
-	$('#header').prepend(formattedPic);
+	$('#header').append(formattedPic);
+	$('#header').append(formattedMessage);
+	$('#header').append(internationalizeButton);
 	if (bio.skills != 0) {
 		$('#header').append(HTMLskillsStart);
 		var skillsLength = bio.skills.length;
@@ -183,14 +186,13 @@ var education = {
 		onlineLength = education.onlineCourses.length;
 		for (var i = 0; i < onlineLength; i++) {
 			var formattedTitle = HTMLonlineTitle.replace('%data%',education.onlineCourses[i].title);
+			formattedTitle = formattedTitle.replace('%url%',education.onlineCourses[i].url);
 			var formattedSchool = HTMLonlineSchool.replace('%data%',education.onlineCourses[i].school);
 			formattedTitle = formattedTitle + formattedSchool;
 			$('#education').append(formattedTitle);
 
 			var formattedDates = HTMLonlineDates.replace('%data%',education.onlineCourses[i].dates);
 			$('.online-entry:last').append(formattedDates);
-			var formattedURL = HTMLonlineURL.replace('%data%',education.onlineCourses[i].url);
-			$('.online-entry:last').append(formattedURL);
 
 			for (var j = 0; j < skillsLength; j++) {
 				$('.online-entry:last').toggleClass(education.onlineCourses[i].skills[j]);
@@ -204,19 +206,6 @@ work.display();
 projects.display();
 education.display();
 
-
-/*var locationizer = function (work_obj) {
-	var locations = []
-
-	for (var i=0; i<work.length; i++) {
-		locations.push(work[i].location);
-	}
-
-	return locations;
-}*/
-
-$('#main').append(internationalizeButton);
-
 function inName() {
 	var name = bio.name;
 	var splitNames = name.split(' ');
@@ -227,21 +216,7 @@ function inName() {
 	return intName;
 };
 
-//$('#map-div').append(googleMap);
-
-/*function to run when skill is clicked to highlight releveant experience
-$(".skills-li").on("click", function() {
-	$("#projects").toggleClass("skill-exp");
-	$(".skills-li").toggleClass("skill-clicked", false);
-	$(this).toggleClass("skill-clicked");
-	console.log($(this).attr('class'));
-})
-
-//similar to above but event is hover
-$(".skills-li").hover( function() {
-	$("#projects").toggleClass("skill-hover");
-	$(this).toggleClass("skill-hover");
-})*/
+$('#map-div').append(googleMap);
 
 //TODO: add feature so can click on multiple skills with different
 //colors hightlighted

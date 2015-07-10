@@ -13,7 +13,7 @@ These are HTML strings. As part of the course, you'll be using JavaScript functi
 replace the %data% placeholder text you see in them.
 */
 var HTMLheaderName = '<h1 id="name">%data%</h1>';
-var HTMLheaderRole = '<span>%data%</span><hr/>';
+var HTMLheaderRole = '<span id="role">%data%</span><hr/>';
 
 var HTMLcontactGeneric = '<li class="flex-item"><span class="orange-text">%contact%</span><span class="white-text">%data%</span></li>';
 var HTMLmobile = '<li class="flex-item"><span class="orange-text">mobile</span><span class="white-text">%data%</span></li>';
@@ -26,7 +26,7 @@ var HTMLlocation = '<li class="flex-item"><span class="orange-text">location</sp
 var HTMLbioPic = '<img src="%data%" class="biopic">';
 var HTMLwelcomeMsg = '<span class="welcome-message">%data%</span>';
 
-var HTMLskillsStart = '<h3 id="skills-h3">Skills at a Glance:</h3><ul id="skills" class="flex-box"></ul>';
+var HTMLskillsStart = '<h3 id="skills-h3">Skills at a Glance:</h3><ul id="skills" class="flex-box skills-container"></ul>';
 var HTMLskills = '<li id="%data%" class="flex-item skills-li %data%"><span class="white-text">%data%</span></li>';
 
 var HTMLworkStart = '<div class="work-entry"></div>';
@@ -50,12 +50,11 @@ var HTMLschoolLocation = '<div class="location-text">%data%</div>';
 var HTMLschoolMajor = '<em><br>%major%: %data%</em>';
 
 var HTMLonlineClasses = '<h3 class="online-classes">Online Classes</h3>';
-var HTMLonlineTitle = '<div class="online-entry"><a href="#">%data%';
+var HTMLonlineTitle = '<div class="online-entry"><a href="%url%">%data%';
 var HTMLonlineSchool = ' - %data%</a></div>';
 var HTMLonlineDates = '<div class="date-text">%data%</div>';
-var HTMLonlineURL = '<br><a href="#">%data%</a>';
 
-var internationalizeButton = '<button>Internationalize</button>';
+var internationalizeButton = '<button id="int-button">Internationalize</button>';
 var googleMap = '<div id="map"></div>';
 
 
@@ -91,9 +90,9 @@ $(document).click(function(loc) {
     var y = loc.pageY;
     logClicks(x,y);
 
-    x = event.pageX;
+/*    x = event.pageX;
     y = event.pageY;
-    logClicks(x,y);
+    logClicks(x,y);*/
 });
 
 /*
@@ -116,7 +115,7 @@ function initializeMap() {
   };
 
 
-  map = new google.maps.Map(document.querySelector('#map-div'), mapOptions);
+  map = new google.maps.Map(document.querySelector('#map'), mapOptions);
 
 
   /*
@@ -234,8 +233,8 @@ function initializeMap() {
 
 };
 
-/*
-Uncomment the code below when you're ready to implement a Google Map!
+
+//Uncomment the code below when you're ready to implement a Google Map!
 
 
 // Calls the initializeMap() function when the page loads
@@ -247,4 +246,3 @@ window.addEventListener('resize', function(e) {
   //Make sure the map bounds get updated on page resize
   map.fitBounds(mapBounds);
 });
-*/
